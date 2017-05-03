@@ -1,5 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+$callback = Rails.env.development? ? 'http://localhost:3000' : ENV['CALLBACK_ADDRESS']
+
+
 Devise.setup do |config|
     config.saml_create_user = true
       config.saml_update_user = true
@@ -14,8 +17,8 @@ Devise.setup do |config|
         settings.issuer                             = "#{$callback}/users/saml/metadata"
         settings.authn_context                      = ""
         settings.idp_slo_target_url                 = ""
-        settings.idp_sso_target_url                 = "WE_ARE_GOING_TO_CHANGE_THIS"
-        settings.idp_cert_fingerprint               = 'WE_ARE_GOING_TO_CHANGE_THIS'
+        settings.idp_sso_target_url                 = "https://dev-142492.oktapreview.com/app/oshokedevdev142492_samlrails_1/exkadbhv4sl9NGu2Q0h7/sso/saml"
+        settings.idp_cert_fingerprint               = '07:E4:F7:0C:75:A9:6E:10:1D:7E:81:6A:3A:19:2F:ED:5C:EA:37:ED:FD:14:44:2B:0D:8E:56:35:DE:91:FB:29'
         settings.idp_cert_fingerprint_algorithm     = 'http://www.w3.org/2000/09/xmldsig#sha256'
       end
   # The secret key used by Devise. Devise uses this key to generate
